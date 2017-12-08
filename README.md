@@ -4,4 +4,4 @@ Patches needed when running OS X or macOS, there are multiple branches of patche
 There are some methods that you can add, devices, patches for renaming devices and some fixes, removing, replacing to let you emulate Mac machines.
 
 # CREDIT GOES TO:
-PHPdev32, MaLdOn, THe KiNG, Toleda, FredWst, TrueSoldier, Slice, STLVNUB, cecekpawon, #insanelymac community (to whom i give  a special thanks), Pike R. Alpha, RehabMan, RampageDevs and pjalm. 
+PHPdev32, MaLdOn, THe KiNG, Toleda, FredWst, TrueSoldier, Slice, STLVNUB, cecekpawon, to insanelymac community (to whom i give  a special thanks), Pike R. Alpha, RehabMan, RampageDevs and pjalm. 

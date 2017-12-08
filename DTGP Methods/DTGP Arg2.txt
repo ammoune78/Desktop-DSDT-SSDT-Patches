@@ -1,5 +1,5 @@
 #Maintained by: THe KiNG for: InsanelyMac and QuoComputer
-This method was applied to the Z77MX-QUO-AOS DSDT because THe KiNG is one of it's (ACPI & UEFI) Motherboard Developpers
+This method was applied to the Z77MX-QUO-AOS Motherboard DSDT because THe KiNG is one of it's (ACPI & UEFI) Developers
 into method label DTGP remove_entry;
 into definitionblock code_regex . insert
 begin

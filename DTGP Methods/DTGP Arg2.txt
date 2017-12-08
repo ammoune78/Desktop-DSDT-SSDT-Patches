@@ -1,0 +1,16 @@
+#Maintained by: THe KiNG for: InsanelyMac and QuoComputer
+This method was created by him since he's one of the Z77MX-QUO-AOS (ACPI & UEFI) Motherboard Developpers
+into method label DTGP remove_entry;
+into definitionblock code_regex . insert
+begin
+Method (DTGP, 2, NotSerialized)\n
+{\n
+    If (LEqual (Arg0, Zero))\n
+    {\n
+        Store (Buffer (One)\n
+            {\n
+                0x03\n
+            }, Arg1)\n
+    }\n
+}
+end

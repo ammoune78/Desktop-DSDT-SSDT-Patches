@@ -1,3 +1,7 @@
+/*
+ * Maintained by: PHPdev32
+ */
+
 into method label DTGP remove_entry;
 into definitionblock code_regex . insert
 begin

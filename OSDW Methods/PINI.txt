@@ -1,0 +1,25 @@
+# Maintenaid by: THe KiNG (ACPI & UEFI Developer) for: InsanelyMac into: Z77MX-QUO-AOS dsdt
+
+# Add OS Initialisations into PINI method
+#
+# Note that in some cases your DSDT doesn't contain have a PINI method
+# particulary on the 7 Series motherboards and earlier so it needs to be added in the _INI Method
+# into Scope _SB be carefull on what you do otherwise your system will not boot at all into the OS
+# keep crashing on Windows and KP on OS X, well the uneeded OS's will be deleted
+
+# Remove existing PINI method to add neww one in the Scope (\)
+into method label PINI remove_entry end;
+
+# Insert scope label \ code_regex PICM insert
+begin
+Method (PINI, 0, NotSerialized)\n
+{\n
+    Store (0x07D9, OSYS)\n
+    Store (0x07D9, OSTY)\n
+    If (CondRefOf (_OSI, Local0))\n
+    {\n
+        If (_OSI ("Darwin"))\n
+        {\n
+            Store (0x2710, OSYS)\n
+        }\n
+        Else\n

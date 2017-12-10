@@ -7,10 +7,11 @@
 # into Scope _SB be carefull on what you do otherwise your system will not boot at all into the OS
 # keep crashing on Windows and KP on OS X, well the uneeded OS's will be deleted
 
-# Remove existing PINI method to add neww one in the Scope (\)
+# Remove existing PINI method to add new one in the Scope (\)
 into method label PINI remove_entry end;
 
-# Insert scope label \ code_regex PICM insert
+# Insert PINI Method into Scope \
+into scope label \ code_regex PICM insert
 begin
 Method (PINI, 0, NotSerialized)\n
 {\n
@@ -23,3 +24,56 @@ Method (PINI, 0, NotSerialized)\n
             Store (0x2710, OSYS)\n
         }\n
         Else\n
+        {\n
+            If (_OSI ("linux"))\n
+            {\n
+                Store (0x03E8, OSYS)\n
+            }\n
+            Else\n
+            {\n
+                If (_OSI ("Windows 2009"))\n
+                {\n
+                    Store (0x07D9, OSYS)\n
+                }\n
+                Else\n
+                {\n
+                    If (_OSI ("Windows 2012"))\n
+                    {\n
+                        Store (0x07DC, OSYS)\n
+                    }\n
+                    Else\n
+                    {\n
+                        If (_OSI ("Windows 2013"))\n
+                        {\n
+                            Store (0x07DD, OSYS)\n
+                        }\n
+                        Else\n
+                        {\n
+                            If (_OSI ("Windows 2015"))\n
+                            {\n
+                                Store (0x07DF, OSYS)\n
+                            }\n
+                        }\n
+                    }\n
+                }\n
+            }\n
+        }\n
+    }\n
+    Else\n
+    {\n
+        Store (0x07D9, OSYS)\n
+    }\n
+}\n
+end;
+
+# Add PINI into Method _INI in a new Scope _SB you should move this Scope before the one that contain the Method _INI
+into definitionblock code_regex . insert
+begin
+Scope (_SB)\n
+{\n
+    Method (_INI, 0, NotSerialized)  // _INI: Initialize\n
+    {\n
+        PINI ()\n
+    }\n
+}\n
+end;

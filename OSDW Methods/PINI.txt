@@ -16,7 +16,6 @@ begin
 Method (PINI, 0, NotSerialized)\n
 {\n
     Store (0x07D9, OSYS)\n
-    Store (0x07D9, OSTY)\n
     If (CondRefOf (_OSI, Local0))\n
     {\n
         If (_OSI ("Darwin"))\n

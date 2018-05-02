@@ -10,7 +10,7 @@
 # Check out the OSDW Injections for more infos about
 
 # Rename \_OSI to _OSI
-into_all all code_regex \\_OSI replaceall_matched begin _OSI end;
+into_all all code_regex \_OSI replaceall_matched begin _OSI end;
 
 # Add OSDW method
 into scope label \ code_regex PICM insert

@@ -65,14 +65,14 @@ Method (PINI, 0, NotSerialized)\n
 }\n
 end;
 
-# Add PINI into Method _INI in a new Scope _SB you should move this Scope before the one that contain the Method _INI
+# Add PINI method into the scope _SB and remove it from the definitionblock
+into method label PINI remove_entry;
 into definitionblock code_regex . insert
 begin
 Scope (_SB)\n
 {\n
-    Method (_INI, 0, NotSerialized)  // _INI: Initialize\n
+    Method (PINI, 0, NotSerialized)  // _INI: Initialize\n
     {\n
-        PINI ()\n
     }\n
 }\n
 end;

@@ -1,0 +1,33 @@
+This patch will add Darwin into _OSI the Operating System Interface Level, so it can now be used in the devices that are supported or not by OS X/macOS.
+The goal is to Enable/Disable the check by the OS, useful on some MoBo that have devices that makes KP, or are compatible.
+
+# OSI Darwin
+into method label _INI parent_label _SB.PCI0 replace_content begin
+Store (0x07D0, OSYS)\n
+If (CondRefOf (\_OSI, Local0))\n
+{\n
+	If (_OSI ("Darwin")) { Store (0x2710, OSYS) }\n
+	\n
+	If (_OSI ("Linux")) { Store (0x03E8, OSYS) }\n
+	\n
+	If (_OSI ("Windows 2001")) { Store (0x07D1, OSYS) }\n
+	\n
+	If (_OSI ("Windows 2001 SP1")) { Store (0x07D1, OSYS) }\n
+	\n
+	If (_OSI ("Windows 2001 SP2")) { Store (0x07D2, OSYS) }\n
+	\n
+	If (_OSI ("Windows 2001.1")) { Store (0x07D3, OSYS) }\n
+	\n
+	If (_OSI ("Windows 2006")) { Store (0x07D6, OSYS) }\n
+	\n
+	If (_OSI ("Windows 2009")) { Store (0x07D9, OSYS) }\n
+	\n
+	If (_OSI ("Windows 2012")) { Store (0x07DC, OSYS) }\n
+	\n
+	If (_OSI ("Windows 2013")) { Store (0x07DD, OSYS) }\n
+	\n
+	If (_OSI ("Windows 2015")) { Store (0x07DF, OSYS) }\n
+}\n
+PINI ()\n
+\n
+end;

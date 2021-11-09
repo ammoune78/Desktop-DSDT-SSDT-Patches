@@ -1,3 +1,5 @@
+Depending on your CPU Scope/Device tree, you need to adapt/modify this patch in order to match your hardware
+
 #CPU Power Management
 Into scope label \_PR.CPU0 insert begin
 Method (DTGP, 5, NotSerialized)\n

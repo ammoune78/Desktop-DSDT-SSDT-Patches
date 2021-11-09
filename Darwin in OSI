@@ -1,6 +1,3 @@
-This patch will add Darwin into _OSI the Operating System Interface Level, so it can now be used in the devices that are supported or not by OS X/macOS.
-The goal is to Enable/Disable the check by the OS, useful on some MoBo that have devices that makes KP, or are compatible.
-
 # OSI Darwin
 into method label _INI parent_label _SB.PCI0 replace_content begin
 Store (0x07D0, OSYS)\n

@@ -1,0 +1,9 @@
+#ADBG
+into definitionblock code_regex External\s\(MDBG,\sIntObj\) replace_matched begin External (MDBG, MethodObj) end;
+into method label ADBG replace_content begin
+If (CondRefOf (MDBG))\n
+{\n
+	Return (MDBG (Arg0))\n
+}\n
+Return (Zero)\n
+end;

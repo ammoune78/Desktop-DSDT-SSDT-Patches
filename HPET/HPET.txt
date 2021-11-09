@@ -1,0 +1,2 @@
+#HPET
+into device label HPET code_regex Name\s\(_UID,\sZero\) replace_matched begin Name (_CID, EisaId ("PNP0C01")) end;

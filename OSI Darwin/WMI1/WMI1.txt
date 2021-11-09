@@ -1,0 +1,14 @@
+#WMI1
+Into device label WMI1 insert begin
+Method (_STA, 0, NotSerialized)\n
+{\n
+	If (_OSI ("Darwin"))\n
+	{\n
+		Return (Zero)\n
+	}\n
+	Else\n
+	{\n
+		Return (0x0F)\n
+	}\n
+}\n
+end;

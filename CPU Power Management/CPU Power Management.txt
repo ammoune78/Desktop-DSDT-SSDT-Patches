@@ -1,7 +1,5 @@
-#Maintained by: PHPdev32
-into method label DTGP remove_entry;
-into definitionblock code_regex . insert
-begin
+#CPU Power Management
+Into scope label \_PR.CPU0 insert begin
 Method (DTGP, 5, NotSerialized)\n
 {\n
     If (LEqual (Arg0, Buffer (0x10)\n
@@ -14,10 +12,7 @@ Method (DTGP, 5, NotSerialized)\n
         {\n
             If (LEqual (Arg2, Zero))\n
             {\n
-                Store (Buffer (One)\n
-                    {\n
-                        0x03\n
-                    }, Arg4)\n
+                Store (Buffer (One) { 0x03 }, Arg4)\n
                 Return (One)\n
             }\n
             If (LEqual (Arg2, One))\n
@@ -26,10 +21,25 @@ Method (DTGP, 5, NotSerialized)\n
             }\n
         }\n
     }\n
-    Store (Buffer (One)\n
-        {\n
-            0x00\n
-        }, Arg4)\n
+	Store (Buffer (One) { 0x00 }, Arg4)\n
     Return (Zero)\n
-}
-end
+}\n
+Method (_DSM, 4, NotSerialized)\n
+{\n
+	If (_OSI ("Darwin"))\n
+	{\n
+	    Store ("writing plugin-type to registry!", Debug)\n
+	    Store (Package (0x02)\n
+	        {\n
+	            "plugin-type",\n
+	            One\n
+	        }, Local0)\n
+	    DTGP (Arg0, Arg1, Arg2, Arg3, RefOf (Local0))\n
+	    Return (Local0)\n
+	}\n
+	Else\n
+	{\n
+	    Return (Zero)\n
+	}\n
+}\n
+end;

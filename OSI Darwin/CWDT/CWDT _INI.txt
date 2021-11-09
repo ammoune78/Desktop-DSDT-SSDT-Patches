@@ -1,0 +1,10 @@
+#CWDT _INI
+Into device label CWDT insert begin
+Method (_INI, 0, NotSerialized)\n
+{\n
+	If (_OSI ("Darwin"))\n
+	{\n
+		Store (Zero, WDTE)\n
+	}\n
+}\n
+end;

@@ -1,0 +1,7 @@
+#PS2K _STA
+Into method label _STA parent_label PS2K insert begin
+If (_OSI ("Darwin"))\n
+{\n
+	Return (Zero)\n
+}\n
+end;

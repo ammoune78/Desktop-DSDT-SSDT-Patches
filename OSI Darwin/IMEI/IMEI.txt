@@ -1,0 +1,18 @@
+#IMEI
+Into device label PCI0 insert begin
+Device (IMEI)\n
+{\n
+	Name (_ADR, 0x00160000)\n
+	Method (_STA, 0, NotSerialized)\n
+	{\n
+		If (_OSI ("Darwin"))\n
+		{\n
+			Return (0x0F)\n
+		}\n
+		Else\n
+		{\n
+			Return (Zero)\n
+		}\n
+	}\n
+}\n
+end;

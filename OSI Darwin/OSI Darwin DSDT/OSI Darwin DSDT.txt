@@ -1,0 +1,2 @@
+#DSDT
+into method label _STA code_regex If\s+\([\\]?\_OSI\s+\(\"Windows\s2012\"\)\) replace_matched begin If (LOr (_OSI ("Windows 2012"), _OSI ("Darwin"))) end;

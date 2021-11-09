@@ -1,0 +1,10 @@
+#TPMX _INI
+Into device label TPMX insert begin
+Method (_INI, 0, NotSerialized)\n
+{\n
+	If (_OSI ("Darwin"))\n
+	{\n
+		Store (One, TPMF)\n
+	}\n
+}\n
+end;

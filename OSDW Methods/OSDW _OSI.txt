@@ -1,13 +1,14 @@
-#Maintenaid by: THe KiNG (ACPI & UEFI Develepor) from: InsanelyMac into: Z77MX-QUO-AOS DSDT
+#Maintained by: THe KiNG (ACPI & UEFI Develepor) of the: Z77MX-QUO-AOS from InsanelyMac Forums
 
-# Add method OSDW into _INI method to let DSDT run "Darwin" OS
+# Add method OSDW into the DSDT, to let Devices switch their fonctions between macOS and Other OS
 #
-# This method require PINI Method into the same Scope (\) to use with Windows & "OS X-macOS"
-# but it needs to be called in some _STA, _DSM and other Methods
+# This method needs to be called in some _STA, _DSM and other Methods following the needs
 # 
-# It will be necessary if running Windows and Darwin with patched ACPI Tables on the Firmware
+# Because the PCs doesn't come with macOS installed, and are only allowed to run Windows and Linux
 #
-# Check out the OSDW Injections in the Apples ACPI tables for more infos
+# It's necessary to inject this method, if running Windows and macOS on the same Personal Computer
+#
+# Check out the OSDW Injection in the Apples ACPI tables for more infos
 
 # Rename \_OSI to _OSI
 into_all all code_regex \_OSI replaceall_matched begin _OSI end;

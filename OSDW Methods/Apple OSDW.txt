@@ -1,0 +1,38 @@
+# Maintained by APPLE  
+
+# Add method OSDW patch into a SSDT or DSDT, But you "have to use it's _OSI patch"
+#
+# You're running macOS on your PC? You must likely swith between Microsoft and Apple OS?
+#
+# Some methods like: _STA, _DSM, _PWR etc... need, to call Darwin, Windows or Linux
+#
+# Then, this is the point. This is the good deal for making this patch
+#
+# Because you speak with the OSs by the way of the hardware and code, 
+#
+# you have to specify to the os, how to use the fonction, or probably not use it
+#
+# Check out the OSDW Injections in the Apples ACPI tables for more infos
+
+# Add the \ Scope on where we have to inject the OSDW
+Into definitionblock code_regex . insert begin
+Scope (\)\n
+{\n
+\n
+}\n
+end;
+
+# Add the OSDW method
+into scope label \ insert begin
+Method (OSDW, 0, NotSerialized)\n
+{\n
+    If ((OSYS == 0x2710))\n
+    {\n
+        Return (One)\n
+    }\n
+    Else\n
+    {\n
+        Return (Zero)\n
+    }\n
+}\n
+end;

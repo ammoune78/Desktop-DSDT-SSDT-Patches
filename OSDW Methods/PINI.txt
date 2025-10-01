@@ -1,11 +1,16 @@
-# Maintenaid by: THe KiNG (ACPI & UEFI Developer) for: InsanelyMac into: Z77MX-QUO-AOS dsdt
+# Maintenaid by: THe KiNG (ACPI & UEFI Developer) for the Z77MX-QUO-AOS from: InsanelyMac Forums 
 
-# Add OS Initialisations into PINI method
+# Add OS Initialisations into PINI method.
 #
-# Note that in some cases your DSDT doesn't contain have a PINI method
-# particulary on the 7 Series motherboards and earlier so it needs to be added in the _INI Method
-# into Scope _SB be carefull on what you do otherwise your system will not boot at all into the OS
-# keep crashing on Windows and KP on OS X, well the uneeded OS's will be deleted
+# Note that in some cases your DSDT doesn't contain a PINI method, particulary on the 7 Series
+# 
+# motherboards and earlier. So it needs to be added in the _INI Method, on the Scope _SB.PCI0
+# 
+# where the OSYS and _OSI are. Then, be carefull on what you do, otherwise your system 
+# 
+# will not boot at all into the OS, or it will keep crashing on Windows and KP on macOS.
+# 
+# Well, now will only write, Darwin, Linux, W7, W10
 
 # Remove existing PINI method to add new one in the Scope (\)
 into method label PINI remove_entry end;

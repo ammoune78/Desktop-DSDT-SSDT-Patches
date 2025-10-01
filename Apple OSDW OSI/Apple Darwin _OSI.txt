@@ -1,0 +1,43 @@
+# Maintained by APPLE, and the patch by ammoune78
+
+# What is _OSI and what is _INI?
+# _OSI "Operating System Interfaces – which returns supported interfaces, behaviors, and features".
+# _INI "Initialize – which performs device specific initialization".
+
+# What is this patch for?
+# Well, this patch will add Darwin _OSI, so it can now be used, for devices 
+# 
+# that are supposed or not to use macOS, sitting or hope.
+# 
+# The goal is to Enable/Disable the check by the OS, so we call OSDW, telling the OS to either
+# 
+# or not using, reading the function, the method etc... to Go or Stop. 
+# 
+# This is helpful on the MoBos that have devices that are or not compatible. Or Apple, have them
+# 
+# On their systems, but doesn't let macOS initialize them. And this is why, they have used this
+# 
+# particular acpi method.
+
+#
+# Recalling the external Scope _SB.PCI0 from DSDT, where the _INI is injected
+into definitionblock code_regex . insert begin
+External (_SB_.PCI0, DeviceObj)\n
+Scope (\_SB.PCI0)\n
+{\n
+\n
+}\n
+end;
+
+# Recall _INI method and inject Darwin OS Onto
+into scope label \_SB.PCI0 insert begin
+Method (\_INI, 0, Serialized)  // _INI: Initialize\n
+{\n
+	OSYS = 0x07D0\n
+	If (CondRefOf (\_OSI, Local0))\n
+	{\n
+		If (_OSI ("Darwin")) { OSYS = 0x2710 }\n
+	}\n
+}\n
+\n
+end;

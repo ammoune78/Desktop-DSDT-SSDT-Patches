@@ -14,6 +14,7 @@
 #
 # Check out the OSDW Injections in the Apples ACPI tables for more infos
 
+# For the SSDT use only, use these following patches:
 # Add the \ Scope on where we have to inject the OSDW
 Into definitionblock code_regex . insert begin
 Scope (\)\n
@@ -36,3 +37,21 @@ Method (OSDW, 0, NotSerialized)\n
     }\n
 }\n
 end;
+
+#
+# For the DSDT use only, use this following patch:
+# Add the OSDW method
+into scope label \ code_regex PICM insert begin
+Method (OSDW, 0, NotSerialized)\n
+{\n
+    If ((OSYS == 0x2710))\n
+    {\n
+        Return (One)\n
+    }\n
+    Else\n
+    {\n
+        Return (Zero)\n
+    }\n
+}\n
+end;
+
